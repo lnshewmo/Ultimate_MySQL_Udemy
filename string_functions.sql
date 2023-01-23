@@ -1,4 +1,4 @@
--- STRING FUNCTIONS
+-- STRING FUNCTIONS to Aggregate fx
 create database bookshop;
 use bookshop;
 DROP TABLE books;
@@ -208,9 +208,3 @@ SELECT
                     author_lname,
                     '!')) AS YELL
 FROM BOOKS ORDER BY author_lname;
-
--- aggregate functions --> first group by criteria, then perform operation
-    
-
-    
-
