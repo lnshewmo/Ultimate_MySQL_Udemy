@@ -3,6 +3,8 @@
 -- aggregate fx COUNT
 use bookshop;
 
+DESC books;
+
 SELECT COUNT(*) from books;  -- count of all rows
 
 SELECT COUNT(title) from BOOKS WHERE title LIKE '%er%';
@@ -46,5 +48,56 @@ SELECT author_fname, author_lname, COUNT(*) FROM books
     
 SELECT CONCAT(author_fname, ' ', author_lname) as author, COUNT(*) FROM books
 	group by author;
+    
+SELECT 
+    CONCAT(author_fname, ' ', author_lname) AS author_name,
+    MIN(released_year) AS first_release,
+    MAX(released_year) AS recent_release,
+    COUNT(*) AS num_titles
+FROM
+    books
+GROUP BY author_lname, author_fname
+ORDER BY author_lname;
+
+-- aggregate fx SUM() and AVG
+
+SELECT author_lname, SUM(pages) FROM books
+GROUP BY author_lname, author_fname;
+
+SELECT author_lname, AVG(pages) FROM books
+	group by author_lname;
+
+-- agg fx exercises    
+SELECT COUNT(*) as num_titles FROM books;
+
+SELECT released_year, COUNT(*) as num_titles FROM books
+	GROUP BY released_year ORDER BY released_year DESC;
+    
+SELECT SUM(stock_quantity) AS total_stock FROM books;
+
+SELECT CONCAT(author_fname, ' ', author_lname) AS author, AVG(released_year) FROM books
+	GROUP BY author;
+
+SELECT CONCAT(author_fname, ' ', author_lname) AS author, pages FROM books
+	ORDER BY pages DESC LIMIT 1;
+    
+SELECT CONCAT(author_fname, ' ', author_lname) AS author, pages FROM books
+	WHERE pages = (SELECT MAX(pages) FROM books);
+    
+SELECT 
+    released_year AS year,
+    COUNT(title) AS '# books',
+    AVG(pages) AS 'avg pages'
+FROM books
+GROUP BY released_year
+ORDER BY released_year ASC;
+
+SELECT * FROM books;
+
+UPDATE books SET author_fname='Laura', author_lname='Miller', released_year=2023, stock_quantity=1 WHERE book_id = 20;
+
+
+
+	
 
 
