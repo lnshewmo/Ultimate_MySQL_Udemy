@@ -92,8 +92,9 @@ WHERE author_lname IN ('Carver', 'Lahiri', 'Smith');
 SELECT * FROM books
 WHERE author_lname NOT IN ('Carver', 'Lahiri', 'Smith');
 
+-- USING MODULO to get all odd book_ids
 SELECT * FROM books 
-WHERE book_id % 2 = 1; -- USING MODULO to get all odd book_ids
+WHERE book_id % 2 = 1; 
 
 -- CASE statements
 SELECT title, released_year,
@@ -121,3 +122,42 @@ SELECT title, stock_quantity,
         ELSE '****'
     END AS stock
 FROM books;
+
+-- IS NULL, IS NOT NULL
+SELECT * FROM books WHERE title IS NOT NULL;
+
+-- Section 11 Exercise
+SELECT * FROM books WHERE released_year < 1985;
+
+SELECT * FROM books WHERE author_lname IN ('Eggers', 'Chabon');
+
+SELECT * FROM books 
+	WHERE author_lname ='Lahiri' AND
+    released_year > 2000;
+    
+SELECT * FROM books 
+	WHERE pages BETWEEN 100 AND 200;
+
+SELECT * FROM books
+	WHERE author_lname LIKE 'C%'
+	OR author_lname LIKE 'S%';
+    
+SELECT title, author_lname, SUBSTR(author_lname, 1, 1) AS FI FROM books
+	WHERE SUBSTR(author_lname, 1, 1) IN ('C', 'S');
+    
+SELECT title, author_lname, 
+CASE
+	WHEN title LIKE '%stories%' THEN 'Short Stories'
+    WHEN title IN ('Just Kids', 'A Heartbreaking Work of Staggering Genius') THEN 'Memoir'
+    ELSE 'Novel'
+END AS type
+FROM books;
+
+SELECT author_fname, author_lname, 
+	CASE 
+		WHEN COUNT(*) = 1 THEN '1 book'
+		ELSE CONCAT(COUNT(*), ' books')
+	END AS COUNT 
+FROM books
+GROUP BY author_fname, author_lname;
+
