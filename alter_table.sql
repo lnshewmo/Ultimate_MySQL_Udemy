@@ -66,7 +66,7 @@ CREATE TABLE vendors (
     last_name VARCHAR(25) NOT NULL,
     company VARCHAR(25) NOT NULL,
     address VARCHAR(25) NOT NULL,
-    CONSTRAINT name_address_unique UNIQUE (first_name, last_name, address)
+    CONSTRAINT name_address_unique UNIQUE (first_name, last_name, address)  -- adding this constraint makes these primary keys
 );
 
 INSERT INTO vendors (first_name, last_name, company, address) VALUES
@@ -80,3 +80,53 @@ CREATE TABLE houses (
   sale_price INT NOT NULL,
   CONSTRAINT sprice_gt_pprice CHECK(sale_price >= purchase_price)
 );
+
+-- ALTER TABLE ---------------------------------------------------
+SELECT * FROM vendors;
+
+-- ADD/DROP COLUMN
+ALTER TABLE vendors
+ADD COLUMN phone VARCHAR(15) NOT NULL DEFAULT '0000000000';  -- the rows already in the table have NULL values unless a DEFAULT is specified
+
+ALTER TABLE vendors
+ADD COLUMN email VARCHAR(25) NOT NULL;  -- the rows already in the table have empty strings
+
+ALTER TABLE vendors
+DROP COLUMN phone; 
+
+-- 2 WAYS TO RENAME A TABLE
+RENAME TABLE vendors TO suppliers;
+ALTER TABLE suppliers RENAME TO vendors;
+
+-- RENAME COLUMN
+ALTER TABLE vendors
+RENAME COLUMN phone TO telephone;
+
+DESC vendors;
+
+-- MODIFY COLUMN
+DESC customers;
+
+ALTER TABLE customers
+MODIFY shipping_address VARCHAR(100) DEFAULT 'unknown';  -- modify data type ONLY and added default value
+
+INSERT INTO customers (F_name, L_name, phone, email) VALUES
+('Chris', 'Mass', '8675309001', 'xmas25@earthlink.net');
+
+SELECT * FROM customers;
+
+-- CHANGE COLUMN
+ALTER TABLE customers
+CHANGE shipping_address street_address VARCHAR(50) NOT NULL;  -- changed name AND data type simultaneously
+
+-- ADD CONSTRAINT
+DESC houses;
+
+ALTER TABLE houses ADD CONSTRAINT positive_value CHECK (purchase_price>=0);
+
+INSERT INTO houses (purchase_price, sale_price) VALUES (-1,4);  -- Error Code: 3819. Check constraint 'positive_value' is violated.
+
+ALTER TABLE houses DROP CONSTRAINT positive_value;
+
+SHOW CREATE TABLE houses;  -- displays the SQL to recreate the table in its current form, can see constraints
+SHOW CREATE TABLE vendors;
