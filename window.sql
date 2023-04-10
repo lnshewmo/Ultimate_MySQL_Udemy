@@ -177,3 +177,34 @@ SELECT
     NTILE(4) OVER(ORDER BY salary DESC) AS salary_quartile
 FROM employees ORDER BY dept_salary_quartile AND department;
 
+-- FIRST_VALUE(expr) returns the value of the expr from the first row of the window frame
+SELECT 
+	emp_no, 
+    department,
+    salary,
+    FIRST_VALUE(emp_no) OVER(PARTITION BY department ORDER BY salary DESC) as highest_paid_dept,
+    FIRST_VALUE(emp_no) OVER(ORDER BY salary DESC) AS highest_paid_overall
+FROM employees  ORDER BY department AND salary;
+
+-- LEAD() and LAG() looking forward or backward, performs a calc from one row to the next
+SELECT 
+	emp_no, 
+    department,
+    salary,
+    salary - LAG(salary) OVER(ORDER BY salary DESC)
+FROM employees;
+
+SELECT 
+	emp_no, 
+    department,
+    salary,
+    salary - LAG(salary) OVER(PARTITION BY department ORDER BY salary DESC) AS dept_salary_diff
+FROM employees;
+
+-- using a number in the LAG(arg) looks backward the number of rows specified and then performs calc
+SELECT 
+	emp_no, 
+    department,
+    salary,
+    salary - LAG(salary,2) OVER(PARTITION BY department ORDER BY salary DESC) AS dept_salary_diff
+FROM employees;
