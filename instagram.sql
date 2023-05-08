@@ -1,7 +1,8 @@
 -- Instragram Database Clone Project
-DROP TABLE instgram;
-CREATE TABLE instagram;
+DROP DATABASE instagram;
+CREATE DATABASE instagram;
 USE instagram;
+SELECT database();
 
 CREATE TABLE users (
 	user_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -12,7 +13,7 @@ CREATE TABLE users (
 DESCRIBE users; 
 
 CREATE TABLE photos (
-	id INT AUTO_INCREMENT PRIMARY KEY,
+	photo_id INT AUTO_INCREMENT PRIMARY KEY,
     image_url VARCHAR (250) NOT NULL,
     user_id INT NOT NULL,
     created_at TIMESTAMP DEFAULT NOW(), 
@@ -26,17 +27,17 @@ DESCRIBE photos;
 	ON photos.user_id = users.user_id;
 
 CREATE TABLE comments(
-	id INT AUTO_INCREMENT PRIMARY KEY,
+	comment_id INT AUTO_INCREMENT PRIMARY KEY,
     comment_text VARCHAR(250) NOT NULL,
     user_id INT NOT NULL,
     photo_id INT NOT NULL, 
     created_at TIMESTAMP DEFAULT NOW(),
     FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (photo_id) REFERENCES pbotos(id)
+    FOREIGN KEY (photo_id) REFERENCES photos(photo_id)
 );
     
 CREATE TABLE likes (
-	user_id INT NOT NULL,
+	likes_id INT NOT NULL,
     photo_id INT NOT NULL,
     created_at TIMESTAMP DEFAULT NOW(),
     FOREIGN KEY (user_ID) REFERENCES users(user_id),
