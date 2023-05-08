@@ -35,16 +35,20 @@ CREATE TABLE comments(
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (photo_id) REFERENCES photos(photo_id)
 );
+
+DESCRIBE comments;
     
 CREATE TABLE likes (
-	likes_id INT NOT NULL,
+	-- likes_id INT NOT NULL,   not needed
+    user_id INT NOT NULL,
     photo_id INT NOT NULL,
     created_at TIMESTAMP DEFAULT NOW(),
-    FOREIGN KEY (user_ID) REFERENCES users(user_id),
-    FOREIGN KEY (photo_id) REFERENCES photos(id),
-    -- ensures combination of these 2 is unique
-    PRIMARY KEY (user_id, photo_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (photo_id) REFERENCES photos(photo_id),
+    PRIMARY KEY (user_id, photo_id)   -- PRIMARY KEY CONSTRAINT: a user can only like a photo once, this ensures the combination is unique (prevents duplication) 
 );
+
+DESCRIBE likes;
     
 CREATE TABLE follows (
 	follower_id INT NOT NULL,
@@ -52,8 +56,7 @@ CREATE TABLE follows (
     created_at TIMESTAMP DEFAULT NOW(), 
     FOREIGN KEY (follower_id) REFERENCES users(user_id),
     FOREIGN KEY (followee_id) REFERENCES users(user_id),
-    -- this primary key maintains a follower/ee relationship (you can only follow someone once)
-    PRIMARY KEY (follower_id, followee_id)
+    PRIMARY KEY (follower_id, followee_id)  -- this primary key maintains a follower/ee relationship (you can only follow someone once)
 );
 
 CREATE TABLE tags (
