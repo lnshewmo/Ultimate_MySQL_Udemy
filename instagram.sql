@@ -51,7 +51,11 @@ CREATE TABLE follows (
     created_at TIMESTAMP DEFAULT NOW(), 
     FOREIGN KEY (follower_id) REFERENCES users(user_id),
     FOREIGN KEY (followee_id) REFERENCES users(user_id),
-    -- this primary key maintains a follower/ee relationship
+    -- this primary key maintains a follower/ee relationship (you can only follow someone once)
     PRIMARY KEY (follower_id, followee_id)
 );
+
+CREATE TABLE tags (
+	id
+    
     
