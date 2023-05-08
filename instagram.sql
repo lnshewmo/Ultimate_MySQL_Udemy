@@ -56,10 +56,34 @@ CREATE TABLE follows (
     created_at TIMESTAMP DEFAULT NOW(), 
     FOREIGN KEY (follower_id) REFERENCES users(user_id),
     FOREIGN KEY (followee_id) REFERENCES users(user_id),
-    PRIMARY KEY (follower_id, followee_id)  -- this primary key maintains a follower/ee relationship (you can only follow someone once)
+    PRIMARY KEY (follower_id, followee_id)  -- PRIMARY KEY CONSTRAINT: maintains the follower/ee relationship 
 );
 
+DESCRIBE follows;
+
+-- HASHTAGS: a photo can have multiple #s, how should this be stored (single vs multiple tables)
+-- considerations: speed of inserting/looking up, deletion of tags
+-- https://stackoverflow.com/questions/20856/recommended-sql-database-design-for-tags-or-tagging
+
 CREATE TABLE tags (
-	id
+	tag_id INT AUTO_INCREMENT PRIMARY KEY,
+    tag_name VARCHAR (255) UNIQUE,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE photo_tags(
+	photo_id INT NOT NULL,
+    tag_id INT NOT NULL,
+    FOREIGN KEY(photo_id) REFERENCES photos(photo_id),
+    FOREIGN KEY(tag_id) REFERENCES tags(tag_id),
+    PRIMARY KEY(photo_id, tag_id)  -- PRIMARY KEY CONSTRAINT: prevents duplication of this combination
+);
+
+SHOW TABLES;
+
+
+    
+
+	
     
     
