@@ -27,6 +27,7 @@ MySQL is an open source (relational) database management system developed by Ora
 
 3 - **Sections 4-5: Inserting Data, CRUD Basics**
 CRUD stands for CREATE, READ, UPDATE, DELETE.
+
 Table properties are assigned at creation to define properties, constraints, default values and key relationships.  
 
 * INSERT INTO <table_name> (col1, col2) VALUES (value1, 'value2');
@@ -35,3 +36,16 @@ Table properties are assigned at creation to define properties, constraints, def
 * UPDATE <table_name> SET var1=value1 WHERE var2=value2;
 * DELETE FROM <table_name> WHERE var1=value1;
 * DELETE FROM <table_name>;  **deletes all rows from the table**
+
+4 -**Section 7: String Functions**
+
+* CONCAT()
+* SUBSTRING()
+* REPLACE()
+* REVERSE()
+* CHAR_LENGTH()
+* UPPER() and LOWER()
+* LEFT() and RIGHT()
+* REPEAT()
+* TRIM()
+
