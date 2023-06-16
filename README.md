@@ -49,3 +49,30 @@ Table properties are assigned at creation to define properties, constraints, def
 * REPEAT()
 * TRIM()
 
+5 -**Sections 8-9: Refining Queries**
+* DISTINCT, ORDER BY, LIMIT, LIKE
+* Aggregate functions with GROUP BY, MIN, MAX, SUM, AVG
+
+6 -**Section 10: Deeper in Data Types**
+* 
+
+7 -**Section 11: Comparison & Logical Operators**
+* 
+
+8 -**Section 12: Constraints and ALTER TABLE**
+* 
+
+9 -**Sections 13-14: Joins**
+* 
+
+10 -**Section 15: Views, Modes & More**
+* 
+
+11 -**Section 16: Window Functions**
+* 
+
+12 -**Sections 17-18: Instagram Data Example**
+* 
+
+13 -**Legacy Sections: Building a Webapp using Node and GoormIDE**
+* 
