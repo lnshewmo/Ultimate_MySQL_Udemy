@@ -79,5 +79,6 @@ SET SESSION sql_mode = 'modes';
 
 -- setting: STRICT_TRANS_TABLES (it will abort/error the action if the action violates the table definitions)
 	-- turning this setting off would permit data to be inserted into the table in violation of the table definitions = BAD
+	-- for example, string could be entered into an INT field
     
 -- NO_ZERO_IN_DATE: disable this setting and dates with '00' can be inserted in the table
