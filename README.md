@@ -76,4 +76,5 @@ Table properties are assigned at creation to define properties, constraints, def
 
 13 -**Legacy Sections: Building a Webapp using Node and GoormIDE**
 * instructions for sourcing a SQL file inside a GoormIDE contaner (https://www.youtube.com/watch?v=DjhthBTXvXg)
-* @Terminal (mysql-ctl cli)
+* open the MySQL command line from the same directory where your .SQL lives in order to source it easily in GoormIDE
+  * @Terminal (mysql-ctl cli)
