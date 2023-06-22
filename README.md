@@ -75,12 +75,13 @@ Table properties are assigned at creation to define properties, constraints, def
 * 
 
 13 -**Legacy Sections: Building a Webapp using Node and GoormIDE**
-* instructions for sourcing a SQL file inside a GoormIDE contaner (https://www.youtube.com/watch?v=DjhthBTXvXg)
+* instructions for sourcing a SQL file inside a GoormIDE contaner on [youtube](https://www.youtube.com/watch?v=DjhthBTXvXg)
 * open the MySQL command line from the same directory where your .SQL lives in order to source it easily in GoormIDE
   * open mysql shell `mysql-ctl cli`
   * verify databases `SHOW DATABASES;`
   * `USE <db_name>;`
   * to run the .sql file `source file_name.sql;`
-* install Node packages:
-  * faker to generate 'fake' users
-  * mysql to connect Mode to MySQL
+* install Node.js packages through the npm registry:
+  * `npm install @faker-js/faker --save-dev` installs faker in order to generate 'fake' users
+  * `npm init -y` creates a package.json file
+  * `npm install mysql` installs [mysql](https://github.com/mysqljs/mysql) in order to extablish a connection between the app.js and a MySQL database 
