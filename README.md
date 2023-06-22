@@ -81,3 +81,6 @@ Table properties are assigned at creation to define properties, constraints, def
   * verify databases `SHOW DATABASES;`
   * `USE <db_name>;`
   * to run the .sql file `source file_name.sql;`
+* install Node packages:
+  * faker to generate 'fake' users
+  * mysql to connect Mode to MySQL
