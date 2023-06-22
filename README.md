@@ -77,11 +77,45 @@ Table properties are assigned at creation to define properties, constraints, def
 13 -**Legacy Sections: Building a Webapp using Node and GoormIDE**
 * instructions for sourcing a SQL file inside a GoormIDE contaner on [youtube](https://www.youtube.com/watch?v=DjhthBTXvXg)
 * open the MySQL command line from the same directory where your .SQL lives in order to source it easily in GoormIDE
-  * open mysql shell `mysql-ctl cli`
+  * in the GoormIDE terminal, open the mysql shell `mysql-ctl cli`
   * verify databases `SHOW DATABASES;`
   * `USE <db_name>;`
-  * to run the .sql file `source file_name.sql;`
-* install Node.js packages through the npm registry:
-  * `npm install @faker-js/faker --save-dev` installs faker in order to generate 'fake' users
-  * `npm init -y` creates a package.json file
-  * `npm install mysql` installs [mysql](https://github.com/mysqljs/mysql) in order to extablish a connection between the app.js and a MySQL database 
+  * to run a .sql file `source file_name.sql;`
+
+* **Use the faker library in Node.js to create a bulk users table in a MySQL database**
+  * install Node.js packages through the npm registry:
+    * `npm install @faker-js/faker --save-dev` installs faker in order to generate 'fake' users
+    * `npm init -y` creates a package.json file
+    * `npm install mysql` installs [mysql](https://github.com/mysqljs/mysql) in order to extablish a connection between the app.js and a MySQL database
+
+``` js
+//import faker library
+const { faker } = require('@faker-js/faker');
+
+//connect to MySQL database using mysql library
+var mysql = require('mysql');
+
+var connection = mysql.createConnection({
+	host: 'localhost',
+	user: 'root',
+	database: 'join_us'	
+});
+
+//INSERT BULK DATA USING AN ARRAY OF ARRAYS
+var data = [];
+for(var i = 0; i < 500; i++){
+	data.push([
+		faker.internet.email(),
+		faker.date.past()
+	]);
+};
+
+var q = 'INSERT INTO users (email, created_at) VALUES ?';
+
+connection.query(q, [data], function(err, result) {
+	console.log(err);
+	console.log(result);
+});
+
+//close the connection
+connection.end();```
