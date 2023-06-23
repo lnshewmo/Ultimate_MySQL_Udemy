@@ -24,6 +24,8 @@ MySQL is an open source (relational) database management system developed by Ora
 * SHOW COLUMNS FROM <table_name>;
 * DESC <table_name>;
 * DROP TABLE <table_name>;
+  
+  exercises: [shirts.sql](/queries/shirts.sql), [cats.sql](/queries/cats.sql), [solutions.sql](/queries/solutions.sql)
 
 3 - **Sections 4-5: Inserting Data, CRUD Basics**
 CRUD stands for CREATE, READ, UPDATE, DELETE.
@@ -50,12 +52,29 @@ Table properties are assigned at creation to define properties, constraints, def
 * TRIM()
 
 5 -**Sections 8-9: Refining Queries**
-* DISTINCT, ORDER BY, LIMIT, LIKE
+* DISTINCT, ORDER BY, ASC, DESC, LIMIT, LIKE
 * Aggregate functions with GROUP BY, MIN, MAX, SUM, AVG
+* Assigning an alias to a group
+* Subqueries using WHERE = (SELECT...
 
 6 -**Section 10: Deeper in Data Types**
-* 
-
+* Strings
+	* storage (bytes) of VARCHAR() vs CHAR() padding
+* Numbers
+	* INT
+	* DECIMAL (n_total_digits, n_digits after decimal)
+	* storage size and precision of FLOAT vs DOUBLE
+* Date/Time
+	* DATE date values, no time "YYYY-MM-DD"
+ 	* TIME no date, time values "HH:MM:SS"
+  	* DATETIME date and time values
+  	* Functions
+  		* CURDATE(), CURTIME(), NOW()
+	  	* DAY(), DAYOFWEEK(), DAYOFYEAR(), MONTHNAME(), YEAR()
+  		* HOUR(), MINUTE()
+		* DATEFORMAT()
+  	* TIMESTAMP default CURRENT_TIMESTAMP or NOW()
+  	  
 7 -**Section 11: Comparison & Logical Operators**
 * 
 
