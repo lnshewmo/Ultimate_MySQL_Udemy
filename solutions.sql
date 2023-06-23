@@ -67,3 +67,6 @@ JOIN likes
 GROUP BY likes.user_id
 HAVING num_likes = (SELECT COUNT(*) FROM photos)
 ORDER BY username;
+
+-- HAVING can follow the grouping, WHERE can not
+-- HAVING with the subquery filters on the groupings
