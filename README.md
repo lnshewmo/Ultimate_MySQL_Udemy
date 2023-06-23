@@ -34,10 +34,10 @@ Table properties are assigned at creation to define properties, constraints, def
 
 * INSERT INTO <table_name> (col1, col2) VALUES (value1, 'value2');
 * SELECT * FROM <table_name> AS alias;
-* WHERE clause
-* UPDATE <table_name> SET var1=value1 WHERE var2=value2;
-* DELETE FROM <table_name> WHERE var1=value1;
-* DELETE FROM <table_name>;  **deletes all rows from the table**
+* always use WHERE clause when using UPDATE/SET or DELETE FROM
+	* UPDATE <table_name> SET var1=value1 WHERE var2=value2;
+	* DELETE FROM <table_name> WHERE var1=value1;
+	* DELETE FROM <table_name>;  **deletes all rows from the table**
 
 4 -**Section 7: String Functions**
 
@@ -57,6 +57,8 @@ Table properties are assigned at creation to define properties, constraints, def
 * Assigning an alias to a group
 * Subqueries using WHERE = (SELECT...
 
+exercises: [group_by.sql](/queries/group_by.sql)
+
 6 -**Section 10: Deeper in Data Types**
 * Strings
 	* storage (bytes) of VARCHAR() vs CHAR() padding
@@ -74,21 +76,36 @@ Table properties are assigned at creation to define properties, constraints, def
   		* HOUR(), MINUTE()
 		* DATEFORMAT()
   	* TIMESTAMP default CURRENT_TIMESTAMP or NOW()
+ 
+  exercises: [data_types.sql](/queries/data_types.sql)
   	  
 7 -**Section 11: Comparison & Logical Operators**
-* 
+* LIKE, NOT LIKE and wildcards
+* \>, <, >=, <=, !=
+* Logical AND, OR, BETWEEN
+	* convert string to DATETIME for BETWEEN 		 
+* IN, NOT IN
+* CASE WHEN <condition> THEN <'alias1'> ELSE AS <'alias2'>
+
+exercises: [logical_operators.sql](/queries/logical_operators.sql)
 
 8 -**Section 12: Constraints and ALTER TABLE**
 * 
 
+exercises: [alter_table.sql](/queries/alter_table.sql)
+
 9 -**Sections 13-14: Joins**
 * 
 
+exercises: [joins.sql](/queries/joins.sql)
+
 10 -**Section 15: Views, Modes & More**
 * 
+exercises: [views.sql](/queries/views.sql)
 
 11 -**Section 16: Window Functions**
 * 
+exercises: [window.sql](/queries/window.sql)
 
 12 -**Sections 17-18: Instagram Data Example**
 * 
